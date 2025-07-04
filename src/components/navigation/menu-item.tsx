@@ -18,7 +18,7 @@ export function MenuItem({ item, basePath = "", level = 0 }: MenuItemProps) {
   const fullPath = item.route ? `${basePath}${item.route}` : basePath
   const isActive = pathname === fullPath
   const hasChildren = item.child && item.child.length > 0
-  const isClickable = (item.route && item.staticPage !== null) 
+  const isClickable = item.route && item.staticPage !== null || !item.staticPage && !hasChildren;
   
   const sortedChildren = item.child ? [...item.child].sort((a, b) => a.order - b.order) : []
   
@@ -61,7 +61,7 @@ export function MenuItem({ item, basePath = "", level = 0 }: MenuItemProps) {
         <>
           {isClickable ? (
             <Link href={fullPath}>
-              <MenuButton 
+              <div 
                 className={`flex whitespace-nowrap overflow-hidden max-w-[9rem]
                   "inline-flex items-center text-white uppercase px-4 py-2 text-xs font-semibold transition-all duration-200",
                   "focus:outline-none",
@@ -80,7 +80,7 @@ export function MenuItem({ item, basePath = "", level = 0 }: MenuItemProps) {
                     aria-hidden="true" 
                   />
                 )}
-              </MenuButton>
+              </div>
             </Link>
           ) : (
             <MenuButton 
