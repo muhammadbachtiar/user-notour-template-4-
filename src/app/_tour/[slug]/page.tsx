@@ -22,7 +22,7 @@ const TourDetail = () => {
   return (
     <>  
         <div className="min-h-screen w-full mt-16">
-            <div className="absolute inset-0 h-[15%] bg-gradient-to-b from-black/25 to-white/5"></div>
+            <div className="absolute inset-0 h-[11%] bg-gradient-to-b from-black/25 to-white/5"></div>
             {isLoadingTour || isFetchingTour && (!tour || Object.keys(tour || {}).length === 0) ? (
                 <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 h-full animate-pulse">
 
